@@ -1,0 +1,134 @@
+<!-- Desktop Sidebar Toggle Button -->
+<div class="d-none d-lg-flex flex-column">
+  <button
+    class="btn btn-outline-secondary m-2 align-self-start"
+    (click)="toggleSidebar()"
+    title="Toggle Sidebar"
+  >
+    <i class="bi bi-list"></i>
+  </button>
+
+  <!-- Desktop Sidebar -->
+  <nav
+    class="bg-light border-end h-100 transition-all"
+    [ngClass]="{ 'sidebar-collapsed': isCollapsed }"
+  >
+    <ul class="nav flex-column p-3 gap-2">
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/dashboard"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-speedometer2"></i>
+          <span class="menu-text" [ngClass]="{ 'd-none': isCollapsed }">
+            Dashboard
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/users"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-people"></i>
+          <span class="menu-text" [ngClass]="{ 'd-none': isCollapsed }">
+            Users
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/settings"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-gear"></i>
+          <span class="menu-text" [ngClass]="{ 'd-none': isCollapsed }">
+            Settings
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/reports"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-file-earmark-text"></i>
+          <span class="menu-text" [ngClass]="{ 'd-none': isCollapsed }">
+            Reports
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Mobile Offcanvas Sidebar -->
+<div
+  class="offcanvas offcanvas-start d-lg-none"
+  tabindex="-1"
+  id="sidebarOffcanvas"
+  aria-labelledby="sidebarOffcanvasLabel"
+>
+  <div class="offcanvas-header bg-dark text-white">
+    <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Menu</h5>
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body p-0">
+    <ul class="nav flex-column gap-1 p-3">
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/dashboard"
+          routerLinkActive="active"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="bi bi-speedometer2"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/users"
+          routerLinkActive="active"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="bi bi-people"></i>
+          Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/settings"
+          routerLinkActive="active"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="bi bi-gear"></i>
+          Settings
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded"
+          routerLink="/reports"
+          routerLinkActive="active"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="bi bi-file-earmark-text"></i>
+          Reports
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
