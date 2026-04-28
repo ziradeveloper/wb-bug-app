@@ -1,0 +1,97 @@
+wb-bug
+│
+├── src/
+│   ├── app/
+│   │   ├── core/
+│   │   ├── shared/
+│   │   ├── modules/
+│   │   ├── layout/
+│   │   ├── auth/
+│   │   ├── features/
+│   │   ├── services/
+│   │   └── app-routing.module.ts
+│   │
+│   ├── assets/
+│   ├── environments/
+│   ├── styles.scss
+│   └── index.html
+│
+├── angular.json
+├── package.json
+└── README.md
+
+
+
+core/
+│
+├── guards/
+│   ├── auth.guard.ts
+│
+├── interceptors/
+│   ├── http.interceptor.ts
+│
+├── services/
+│   ├── auth.service.ts
+│   ├── api.service.ts
+│
+├── models/
+│   ├── user.model.ts
+│   ├── customer.model.ts
+│   ├── campaign.model.ts
+│
+└── core.module.ts
+
+
+shared/
+│
+├── components/
+│   ├── button/
+│   ├── modal/
+│   ├── table/
+│   ├── loader/
+│
+├── pipes/
+│   ├── phone-format.pipe.ts
+│
+├── directives/
+│
+└── shared.module.ts
+
+
+features/
+│
+├── dashboard/
+│   ├── dashboard.component.ts
+│   ├── dashboard.component.html
+│
+├── customers/
+│   ├── customer-list/
+│   ├── customer-add/
+│   ├── customer-edit/
+│
+├── campaigns/
+│   ├── campaign-create/
+│   ├── campaign-list/
+│   ├── campaign-detail/
+│
+├── whatsapp/
+│   ├── whatsapp-service.ts
+│
+└── features.module.ts
+
+
+layout/
+│
+├── sidebar/
+├── header/
+├── footer/
+├── layout.component.ts
+└── layout.module.ts
+
+
+services/
+│
+├── customer.service.ts
+├── campaign.service.ts
+├── whatsapp.service.ts
+├── api.service.ts
