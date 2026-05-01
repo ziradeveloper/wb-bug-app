@@ -1,0 +1,152 @@
+/* 
+  Global Theme Overrides (theme.css)
+  This file configures the complete Bootstrap semantic color palette.
+  
+  Changing any of these variables will IMMEDIATELY apply to all standard 
+  Bootstrap classes (.btn-danger, .bg-success, .text-warning, etc.) 
+  throughout your Angular app.
+*/
+
+:root {
+  /* ==========================================
+     PRIMARY (Blue) - Main brand color
+     (Note: Primary is dynamically overridden by ThemeService based on the UI Preset!)
+     ========================================== */
+  --bs-primary: #0d6efd;
+  --bs-primary-rgb: 13, 110, 253;
+  --bs-primary-bg-subtle: #cfe2ff;
+  --bs-primary-border-subtle: #9ec5fe;
+  --bs-primary-text-emphasis: #052c65;
+
+  /* ==========================================
+     SECONDARY (Gray) - Secondary actions
+     ========================================== */
+  --bs-secondary: #6c757d;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-secondary-bg-subtle: #e2e3e5;
+  --bs-secondary-border-subtle: #c4c8cb;
+  --bs-secondary-text-emphasis: #2b2f32;
+
+  /* ==========================================
+     SUCCESS (Green) - Positive actions
+     ========================================== */
+  --bs-success: #198754;
+  --bs-success-rgb: 25, 135, 84;
+  --bs-success-bg-subtle: #d1e7dd;
+  --bs-success-border-subtle: #a3cfbb;
+  --bs-success-text-emphasis: #0a3622;
+
+  /* ==========================================
+     INFO (Cyan) - Informative content
+     ========================================== */
+  --bs-info: #0dcaf0;
+  --bs-info-rgb: 13, 202, 240;
+  --bs-info-bg-subtle: #cff4fc;
+  --bs-info-border-subtle: #9eeaf9;
+  --bs-info-text-emphasis: #055160;
+
+  /* ==========================================
+     WARNING (Yellow) - Warnings, non-critical
+     ========================================== */
+  --bs-warning: #ffc107;
+  --bs-warning-rgb: 255, 193, 7;
+  --bs-warning-bg-subtle: #fff3cd;
+  --bs-warning-border-subtle: #ffe69c;
+  --bs-warning-text-emphasis: #664d03;
+
+  /* ==========================================
+     DANGER (Red) - Errors, destructive actions
+     ========================================== */
+  --bs-danger: #dc3545;
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-bg-subtle: #f8d7da;
+  --bs-danger-border-subtle: #f1aeb5;
+  --bs-danger-text-emphasis: #58151c;
+
+  /* ==========================================
+     LIGHT / DARK
+     ========================================== */
+  --bs-light: #f8f9fa;
+  --bs-light-rgb: 248, 249, 250;
+  --bs-dark: #212529;
+  --bs-dark-rgb: 33, 37, 41;
+}
+
+/* ==========================================
+   DARK MODE OVERRIDES
+   When the user switches to Dark Mode, Bootstrap needs inverted emphasis colors
+   ========================================== */
+[data-bs-theme="dark"] {
+  --bs-secondary-bg-subtle: rgba(108, 117, 125, 0.16);
+  --bs-secondary-border-subtle: rgba(108, 117, 125, 0.4);
+  --bs-secondary-text-emphasis: #a3a8ab;
+
+  --bs-success-bg-subtle: rgba(25, 135, 84, 0.16);
+  --bs-success-border-subtle: rgba(25, 135, 84, 0.4);
+  --bs-success-text-emphasis: #75b798;
+
+  --bs-info-bg-subtle: rgba(13, 202, 240, 0.16);
+  --bs-info-border-subtle: rgba(13, 202, 240, 0.4);
+  --bs-info-text-emphasis: #6edff6;
+
+  --bs-warning-bg-subtle: rgba(255, 193, 7, 0.16);
+  --bs-warning-border-subtle: rgba(255, 193, 7, 0.4);
+  --bs-warning-text-emphasis: #ffda6a;
+
+  --bs-danger-bg-subtle: rgba(220, 53, 69, 0.16);
+  --bs-danger-border-subtle: rgba(220, 53, 69, 0.4);
+  --bs-danger-text-emphasis: #ea868f;
+}
+
+/* Smooth transitions when switching light/dark modes */
+body, .navbar, .sidebar-wrapper, .footer-wrapper, .card, .btn {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ensure .btn-primary explicitly inherits our dynamic theme variables! */
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-hover-border-color: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-active-bg: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-active-border-color: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-color: var(--bs-primary-contrast, #fff);
+  --bs-btn-hover-color: var(--bs-primary-contrast, #fff);
+  --bs-btn-active-color: var(--bs-primary-contrast, #fff);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+  --bs-btn-disabled-color: var(--bs-primary-contrast, #fff);
+}
+
+.bg-primary {
+  color: var(--bs-primary-contrast, #fff) !important;
+}
+
+/* Ensure native Bootstrap components use our dynamic primary color */
+.nav-pills {
+  --bs-nav-pills-link-active-bg: var(--bs-primary);
+  --bs-nav-pills-link-active-color: var(--bs-primary-contrast, #fff);
+}
+
+.pagination {
+  --bs-pagination-active-bg: var(--bs-primary);
+  --bs-pagination-active-border-color: var(--bs-primary);
+  --bs-pagination-active-color: var(--bs-primary-contrast, #fff);
+}
+
+.list-group {
+  --bs-list-group-active-bg: var(--bs-primary);
+  --bs-list-group-active-border-color: var(--bs-primary);
+  --bs-list-group-active-color: var(--bs-primary-contrast, #fff);
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: var(--bs-primary);
+  --bs-dropdown-link-active-color: var(--bs-primary-contrast, #fff);
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}

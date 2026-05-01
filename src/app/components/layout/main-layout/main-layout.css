@@ -1,0 +1,24 @@
+/* 
+  We rely on Bootstrap utility classes (d-flex, vh-100, overflow-auto, etc.)
+  in main-layout.html for layout.
+  
+  The only custom CSS left here is for styling the webkit scrollbars, 
+  which Bootstrap does not support natively.
+*/
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bs-secondary-bg);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--bs-secondary);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-primary);
+}

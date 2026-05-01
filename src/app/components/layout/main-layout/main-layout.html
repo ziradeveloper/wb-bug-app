@@ -1,0 +1,27 @@
+<div class="d-flex flex-column vh-100 w-100 overflow-hidden">
+  <!-- Navbar (Fixed at top) -->
+  <header class="flex-shrink-0 sticky-top w-100 z-3 shadow-sm">
+    <app-navbar></app-navbar>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="d-flex flex-grow-1 overflow-hidden">
+    <!-- Sidebar (Fixed on left) -->
+    <aside class="flex-shrink-0 overflow-y-auto overflow-x-hidden h-100 custom-scrollbar d-none d-lg-block">
+      <app-sidebar></app-sidebar>
+    </aside>
+
+    <!-- Main Content with Router Outlet (Scrollable) -->
+    <main class="flex-grow-1 overflow-y-auto overflow-x-hidden p-3 p-md-4 custom-scrollbar">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- Footer (Fixed at bottom) -->
+  <footer class="flex-shrink-0 w-100">
+    <app-footer></app-footer>
+  </footer>
+
+  <!-- Global Theme Controller -->
+  <app-theme-controller></app-theme-controller>
+</div>
