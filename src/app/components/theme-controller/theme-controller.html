@@ -1,9 +1,7 @@
-<button class="position-fixed bottom-0 end-0 m-4 z-3 btn btn-primary rounded-circle shadow d-flex align-items-center justify-content-center transition" 
-        style="width: 3.5rem; height: 3.5rem;"
-        data-bs-toggle="offcanvas" 
-        data-bs-target="#themeOffcanvas" 
-        aria-controls="themeOffcanvas"
-        title="Theme Settings">
+<button
+  class="position-fixed bottom-0 end-0 m-4 z-3 btn btn-primary rounded-circle shadow d-flex align-items-center justify-content-center transition"
+  style="width: 3.5rem; height: 3.5rem;" data-bs-toggle="offcanvas" data-bs-target="#themeOffcanvas"
+  aria-controls="themeOffcanvas" title="Theme Settings">
   <i class="bi bi-magic fs-4"></i>
 </button>
 
@@ -20,10 +18,12 @@
     <div class="mb-4">
       <label class="form-label fw-semibold mb-2">Appearance</label>
       <div class="d-flex gap-2">
-        <button class="btn btn-outline-secondary flex-grow-1" [class.active]="colorMode === 'light'" (click)="setMode('light')">
+        <button class="btn btn-outline-secondary flex-grow-1" [class.active]="colorMode === 'light'"
+          (click)="setMode('light')">
           <i class="bi bi-sun-fill me-1"></i> Light
         </button>
-        <button class="btn btn-outline-secondary flex-grow-1" [class.active]="colorMode === 'dark'" (click)="setMode('dark')">
+        <button class="btn btn-outline-secondary flex-grow-1" [class.active]="colorMode === 'dark'"
+          (click)="setMode('dark')">
           <i class="bi bi-moon-fill me-1"></i> Dark
         </button>
       </div>
@@ -34,13 +34,11 @@
       <label class="form-label fw-semibold mb-2">Accent Color</label>
       <div class="row g-2">
         <div class="col-6" *ngFor="let p of presets">
-          <button class="btn btn-outline-secondary w-100 d-flex align-items-center gap-2 p-2 text-start" 
-                  [class.active]="activePreset === p.id"
-                  (click)="setPreset(p.id)"
-                  [title]="p.label">
-            <span class="rounded-circle shadow-sm flex-shrink-0 border" 
-                  [style.background-color]="'hsl(' + p.h + ', ' + p.s + '%, ' + p.l + '%)'" 
-                  style="width: 1.5rem; height: 1.5rem;">
+          <button class="btn btn-outline-secondary w-100 d-flex align-items-center gap-2 p-2 text-start"
+            [class.active]="activePreset === p.id" (click)="setPreset(p.id)" [title]="p.label">
+            <span class="rounded-circle shadow-sm flex-shrink-0 border"
+              [style.background-color]="'hsl(' + p.h + ', ' + p.s + '%, ' + p.l + '%)'"
+              style="width: 1.5rem; height: 1.5rem;">
             </span>
             <span class="small fw-medium text-truncate flex-grow-1">{{ p.label }}</span>
           </button>
@@ -54,7 +52,8 @@
         <span>Font Size</span>
         <span class="text-body-secondary small">{{ fontSize.toFixed(2) }}rem</span>
       </label>
-      <input type="range" class="form-range" min="0.8" max="1.5" step="0.05" [value]="fontSize" (input)="onFontSize($event)">
+      <input type="range" class="form-range" min="0.8" max="1.5" step="0.05" [value]="fontSize"
+        (input)="onFontSize($event)">
       <div class="d-flex justify-content-between text-body-secondary small mt-1">
         <span>A</span>
         <span class="fs-5">A</span>
@@ -62,7 +61,7 @@
     </div>
 
     <!-- Border Radius -->
-    <div class="mb-4">
+    <!-- <div class="mb-4">
       <label class="form-label fw-semibold mb-2 d-flex justify-content-between">
         <span>Border Radius</span>
         <span class="text-body-secondary small">{{ borderRadius.toFixed(3) }}rem</span>
@@ -73,7 +72,7 @@
         <div class="flex-grow-1 bg-secondary-subtle border" style="height: 2.5rem; border-radius: 0.375rem"></div>
         <div class="flex-grow-1 bg-secondary-subtle border" style="height: 2.5rem; border-radius: 1rem"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="offcanvas-footer p-3 border-top bg-body-tertiary">

@@ -20,21 +20,23 @@ export interface ThemeConfig {
 }
 
 export const THEME_PRESETS: ThemePreset[] = [
-  { id: 'blue',    label: 'Ocean Blue',     h: 211, s: 72, l: 52, icon: 'bi-droplet-fill' },
-  { id: 'violet',  label: 'Royal Violet',   h: 263, s: 72, l: 52, icon: 'bi-gem' },
-  { id: 'teal',    label: 'Teal Breeze',    h: 174, s: 72, l: 52, icon: 'bi-wind' },
-  { id: 'rose',    label: 'Rose Quartz',    h: 345, s: 72, l: 52, icon: 'bi-heart-fill' },
-  { id: 'amber',   label: 'Amber Glow',     h: 38,  s: 72, l: 52, icon: 'bi-sun-fill' },
-  { id: 'emerald', label: 'Emerald',        h: 152, s: 72, l: 52, icon: 'bi-tree-fill' },
-  { id: 'black',   label: 'Obsidian Black', h: 0,   s: 0,  l: 15, icon: 'bi-moon-fill' },
-  { id: 'white',   label: 'Pearl White',    h: 0,   s: 0,  l: 96, icon: 'bi-snow' },
+  { id: 'blue', label: 'Ocean Blue', h: 211, s: 72, l: 52, icon: 'bi-droplet-fill' },
+  { id: 'violet', label: 'Royal Violet', h: 263, s: 72, l: 52, icon: 'bi-gem' },
+  { id: 'teal', label: 'Teal Breeze', h: 174, s: 72, l: 52, icon: 'bi-wind' },
+  { id: 'rose', label: 'Rose Quartz', h: 345, s: 72, l: 52, icon: 'bi-heart-fill' },
+  { id: 'amber', label: 'Amber Glow', h: 38, s: 72, l: 52, icon: 'bi-sun-fill' },
+  { id: 'emerald', label: 'Emerald', h: 152, s: 72, l: 52, icon: 'bi-tree-fill' },
+  { id: 'whatsapp', label: 'WhatsApp Green', h: 155, s: 85, l: 35, icon: 'bi-whatsapp' },
+  { id: 'sand', label: 'Sand', h: 28, s: 32, l: 71, icon: 'bi-brightness-high' },
+  { id: 'black', label: 'Obsidian Black', h: 0, s: 0, l: 15, icon: 'bi-moon-fill' },
+  { id: 'white', label: 'Pearl White', h: 0, s: 0, l: 96, icon: 'bi-snow' },
 ];
 
 const STORAGE_KEY = 'wb-bug-theme';
 
 const DEFAULT_CONFIG: ThemeConfig = {
-  colorMode: 'dark',
-  presetId: 'blue',
+  colorMode: 'light',
+  presetId: 'sand',
   fontSize: 1.0,
   borderRadius: 0.375,
 };
@@ -93,24 +95,24 @@ export class ThemeService {
 
     // Calculate hover color (darker for light colors, lighter for dark colors)
     const hoverL = p.l > 50 ? Math.max(0, p.l - 15) : Math.min(100, p.l + 15);
-    
+
     // Calculate contrast text (black or white)
     const contrastColor = p.l > 60 ? '#000' : '#fff';
 
-    root.style.setProperty('--bs-primary',         `hsl(${p.h}, ${p.s}%, ${p.l}%)`);
-    root.style.setProperty('--bs-primary-rgb',     this._hslToRgbTriplet(p.h, p.s, p.l));
-    root.style.setProperty('--bs-primary-hover',   `hsl(${p.h}, ${p.s}%, ${hoverL}%)`);
+    root.style.setProperty('--bs-primary', `hsl(${p.h}, ${p.s}%, ${p.l}%)`);
+    root.style.setProperty('--bs-primary-rgb', this._hslToRgbTriplet(p.h, p.s, p.l));
+    root.style.setProperty('--bs-primary-hover', `hsl(${p.h}, ${p.s}%, ${hoverL}%)`);
     root.style.setProperty('--bs-primary-contrast', contrastColor);
 
-    root.style.setProperty('--bs-link-color',      `hsl(${p.h}, ${p.s}%, ${p.l > 80 ? 40 : p.l}%)`);
-    root.style.setProperty('--bs-link-hover-color',`hsl(${p.h}, ${p.s}%, ${p.l > 80 ? 20 : hoverL}%)`);
+    root.style.setProperty('--bs-link-color', `hsl(${p.h}, ${p.s}%, ${p.l > 80 ? 40 : p.l}%)`);
+    root.style.setProperty('--bs-link-hover-color', `hsl(${p.h}, ${p.s}%, ${p.l > 80 ? 20 : hoverL}%)`);
 
     // Font size scale
     root.style.setProperty('--theme-font-scale', `${cfg.fontSize}`);
     root.style.fontSize = `${cfg.fontSize}rem`;
 
     // Border radius
-    root.style.setProperty('--bs-border-radius',    `${cfg.borderRadius}rem`);
+    root.style.setProperty('--bs-border-radius', `${cfg.borderRadius}rem`);
     root.style.setProperty('--bs-border-radius-sm', `${cfg.borderRadius * 0.6}rem`);
     root.style.setProperty('--bs-border-radius-lg', `${cfg.borderRadius * 1.5}rem`);
     root.style.setProperty('--bs-border-radius-xl', `${cfg.borderRadius * 2}rem`);

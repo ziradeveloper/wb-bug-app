@@ -1,4 +1,5 @@
 /* 
-  All sidebar styling is now handled entirely via Bootstrap utility classes 
-  (nav-pills, d-flex, border-start, ms-3, etc.) in the HTML template! 
+  Sidebar component-scoped styles cleared.
+  All nav-link rules are now in sidebar-global.css (global scope)
+  to ensure Angular's view encapsulation does not block them.
 */

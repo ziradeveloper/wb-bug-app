@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LayoutService } from '../../../services/layout';
 
 interface MenuItem {
   id: string;
@@ -13,12 +14,12 @@ interface MenuItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
 export class SidebarComponent {
-  isCollapsed = false;
+  layout = inject(LayoutService);
 
   menuItems: MenuItem[] = [
     {
@@ -124,10 +125,6 @@ export class SidebarComponent {
       ]
     }
   ];
-
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
-  }
 
   toggleMenuExpand(item: MenuItem) {
     if (item.children && item.children.length > 0) {

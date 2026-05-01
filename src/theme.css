@@ -98,6 +98,55 @@
   --bs-danger-text-emphasis: #ea868f;
 }
 
+/* ==============================================
+   SAND THEME — Full Bootstrap Variable Mapping
+   Applied when the 'sand' preset is active (Light Mode)
+   ============================================== */
+[data-bs-theme="light"] {
+  /* Sand: Remap all Bootstrap semantic colors to the Sand palette */
+  --bs-success:              #6F9D7A;
+  --bs-success-rgb:          111, 157, 122;
+  --bs-success-bg-subtle:    #d9ece0;
+  --bs-success-border-subtle:#b3d4bc;
+  --bs-success-text-emphasis:#2e5536;
+
+  --bs-info:                 #6C8EA4;
+  --bs-info-rgb:             108, 142, 164;
+  --bs-info-bg-subtle:       #d9e7ef;
+  --bs-info-border-subtle:   #b3ceda;
+  --bs-info-text-emphasis:   #2c4a59;
+
+  --bs-warning:              #E6B566;
+  --bs-warning-rgb:          230, 181, 102;
+  --bs-warning-bg-subtle:    #faebd1;
+  --bs-warning-border-subtle:#f3d6a3;
+  --bs-warning-text-emphasis:#7a5318;
+
+  --bs-danger:               #C76A6A;
+  --bs-danger-rgb:           199, 106, 106;
+  --bs-danger-bg-subtle:     #f5d5d5;
+  --bs-danger-border-subtle: #e8aaaa;
+  --bs-danger-text-emphasis: #6b1f1f;
+
+  --bs-secondary:            #8B7355;
+  --bs-secondary-rgb:        139, 115, 85;
+  --bs-secondary-bg-subtle:  #e8e0d6;
+  --bs-secondary-border-subtle: #d0c1ae;
+  --bs-secondary-text-emphasis: #3d2f1e;
+
+  /* Sand background tokens → Bootstrap body surfaces */
+  --bs-body-bg:              #FAF7F4;
+  --bs-body-color:           #3A2F28;
+  --bs-secondary-bg:         #F2EAE3;
+  --bs-tertiary-bg:          #E6D9CF;
+  --bs-border-color:         #E4D7CC;
+  --bs-body-color-rgb:       58, 47, 40;
+
+  /* Sand subtle muted text */
+  --bs-secondary-color:      #6B5B4F;
+  --bs-tertiary-color:       #8A786B;
+}
+
 /* Smooth transitions when switching light/dark modes */
 body, .navbar, .sidebar-wrapper, .footer-wrapper, .card, .btn {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -123,10 +172,9 @@ body, .navbar, .sidebar-wrapper, .footer-wrapper, .card, .btn {
   color: var(--bs-primary-contrast, #fff) !important;
 }
 
-/* Ensure native Bootstrap components use our dynamic primary color */
+/* nav-pills active bg is handled per-component (sidebar.css overrides this) */
 .nav-pills {
   --bs-nav-pills-link-active-bg: var(--bs-primary);
-  --bs-nav-pills-link-active-color: var(--bs-primary-contrast, #fff);
 }
 
 .pagination {
@@ -150,3 +198,198 @@ body, .navbar, .sidebar-wrapper, .footer-wrapper, .card, .btn {
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);
 }
+
+/* ============================================================
+   MISSING BOOTSTRAP COMPONENT OVERRIDES
+   Every Bootstrap class below now correctly inherits the
+   dynamic theme palette (primary, secondary, success, etc.)
+   ============================================================ */
+
+/* --- btn-outline-primary --- */
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: var(--bs-primary);
+  --bs-btn-hover-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--bs-primary-contrast, #fff);
+  --bs-btn-active-bg: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-active-border-color: var(--bs-primary-hover, var(--bs-primary));
+  --bs-btn-active-color: var(--bs-primary-contrast, #fff);
+}
+
+/* --- btn-secondary (filled) --- */
+.btn-secondary {
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--bs-secondary);
+  --bs-btn-hover-border-color: var(--bs-secondary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--bs-secondary);
+  --bs-btn-active-border-color: var(--bs-secondary);
+  --bs-btn-active-color: #fff;
+}
+
+/* --- btn-outline-secondary --- */
+.btn-outline-secondary {
+  --bs-btn-color: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-bg: var(--bs-secondary);
+  --bs-btn-hover-border-color: var(--bs-secondary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--bs-secondary);
+  --bs-btn-active-border-color: var(--bs-secondary);
+  --bs-btn-active-color: #fff;
+}
+
+/* --- btn-success, btn-outline-success --- */
+.btn-success {
+  --bs-btn-bg: var(--bs-success);
+  --bs-btn-border-color: var(--bs-success);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--bs-success);
+  --bs-btn-hover-border-color: var(--bs-success);
+  --bs-btn-hover-color: #fff;
+}
+.btn-outline-success {
+  --bs-btn-color: var(--bs-success);
+  --bs-btn-border-color: var(--bs-success);
+  --bs-btn-hover-bg: var(--bs-success);
+  --bs-btn-hover-border-color: var(--bs-success);
+  --bs-btn-hover-color: #fff;
+}
+
+/* --- btn-danger, btn-outline-danger --- */
+.btn-danger {
+  --bs-btn-bg: var(--bs-danger);
+  --bs-btn-border-color: var(--bs-danger);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--bs-danger);
+  --bs-btn-hover-border-color: var(--bs-danger);
+  --bs-btn-hover-color: #fff;
+}
+.btn-outline-danger {
+  --bs-btn-color: var(--bs-danger);
+  --bs-btn-border-color: var(--bs-danger);
+  --bs-btn-hover-bg: var(--bs-danger);
+  --bs-btn-hover-border-color: var(--bs-danger);
+  --bs-btn-hover-color: #fff;
+}
+
+/* --- btn-warning, btn-outline-warning --- */
+.btn-warning {
+  --bs-btn-bg: var(--bs-warning);
+  --bs-btn-border-color: var(--bs-warning);
+  --bs-btn-color: #000;
+  --bs-btn-hover-bg: var(--bs-warning);
+  --bs-btn-hover-border-color: var(--bs-warning);
+  --bs-btn-hover-color: #000;
+}
+.btn-outline-warning {
+  --bs-btn-color: var(--bs-warning);
+  --bs-btn-border-color: var(--bs-warning);
+  --bs-btn-hover-bg: var(--bs-warning);
+  --bs-btn-hover-border-color: var(--bs-warning);
+  --bs-btn-hover-color: #000;
+}
+
+/* --- btn-info, btn-outline-info --- */
+.btn-info {
+  --bs-btn-bg: var(--bs-info);
+  --bs-btn-border-color: var(--bs-info);
+  --bs-btn-color: #000;
+  --bs-btn-hover-bg: var(--bs-info);
+  --bs-btn-hover-border-color: var(--bs-info);
+  --bs-btn-hover-color: #000;
+}
+.btn-outline-info {
+  --bs-btn-color: var(--bs-info);
+  --bs-btn-border-color: var(--bs-info);
+  --bs-btn-hover-bg: var(--bs-info);
+  --bs-btn-hover-border-color: var(--bs-info);
+  --bs-btn-hover-color: #000;
+}
+
+/* --- Alerts --- */
+.alert-primary   { --bs-alert-color: var(--bs-primary-text-emphasis, var(--bs-primary)); --bs-alert-bg: var(--bs-primary-bg-subtle); --bs-alert-border-color: var(--bs-primary-border-subtle); }
+.alert-secondary { --bs-alert-color: var(--bs-secondary-text-emphasis); --bs-alert-bg: var(--bs-secondary-bg-subtle); --bs-alert-border-color: var(--bs-secondary-border-subtle); }
+.alert-success   { --bs-alert-color: var(--bs-success-text-emphasis); --bs-alert-bg: var(--bs-success-bg-subtle); --bs-alert-border-color: var(--bs-success-border-subtle); }
+.alert-danger    { --bs-alert-color: var(--bs-danger-text-emphasis); --bs-alert-bg: var(--bs-danger-bg-subtle); --bs-alert-border-color: var(--bs-danger-border-subtle); }
+.alert-warning   { --bs-alert-color: var(--bs-warning-text-emphasis); --bs-alert-bg: var(--bs-warning-bg-subtle); --bs-alert-border-color: var(--bs-warning-border-subtle); }
+.alert-info      { --bs-alert-color: var(--bs-info-text-emphasis); --bs-alert-bg: var(--bs-info-bg-subtle); --bs-alert-border-color: var(--bs-info-border-subtle); }
+
+/* --- Badges --- */
+.badge.bg-primary   { background-color: var(--bs-primary) !important; color: var(--bs-primary-contrast, #fff) !important; }
+.badge.bg-secondary { background-color: var(--bs-secondary) !important; color: #fff !important; }
+.badge.bg-success   { background-color: var(--bs-success) !important; color: #fff !important; }
+.badge.bg-danger    { background-color: var(--bs-danger) !important; color: #fff !important; }
+.badge.bg-warning   { background-color: var(--bs-warning) !important; color: #000 !important; }
+.badge.bg-info      { background-color: var(--bs-info) !important; color: #000 !important; }
+
+/* --- Progress bar --- */
+.progress-bar { background-color: var(--bs-primary); }
+
+/* --- Form focus rings (input, select, textarea) --- */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* --- Tabs --- */
+.nav-tabs {
+  --bs-nav-tabs-link-active-color: var(--bs-primary);
+  --bs-nav-tabs-link-active-border-color: var(--bs-primary) var(--bs-primary) var(--bs-body-bg);
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  color: var(--bs-primary);
+}
+
+/* --- Table --- */
+.table-primary { --bs-table-bg: var(--bs-primary-bg-subtle); --bs-table-border-color: var(--bs-primary-border-subtle); color: var(--bs-primary-text-emphasis); }
+.table-secondary { --bs-table-bg: var(--bs-secondary-bg-subtle); --bs-table-border-color: var(--bs-secondary-border-subtle); color: var(--bs-secondary-text-emphasis); }
+.table-success { --bs-table-bg: var(--bs-success-bg-subtle); --bs-table-border-color: var(--bs-success-border-subtle); color: var(--bs-success-text-emphasis); }
+.table-danger  { --bs-table-bg: var(--bs-danger-bg-subtle); --bs-table-border-color: var(--bs-danger-border-subtle); color: var(--bs-danger-text-emphasis); }
+.table-warning { --bs-table-bg: var(--bs-warning-bg-subtle); --bs-table-border-color: var(--bs-warning-border-subtle); color: var(--bs-warning-text-emphasis); }
+.table-info    { --bs-table-bg: var(--bs-info-bg-subtle); --bs-table-border-color: var(--bs-info-border-subtle); color: var(--bs-info-text-emphasis); }
+
+/* --- Modal --- */
+.modal-content {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  border-color: var(--bs-border-color);
+}
+.modal-header, .modal-footer {
+  border-color: var(--bs-border-color);
+  background-color: var(--bs-tertiary-bg);
+}
+
+/* --- Tooltip & Popover --- */
+.tooltip .tooltip-inner { background-color: var(--bs-secondary); }
+.popover { --bs-popover-border-color: var(--bs-border-color); --bs-popover-header-bg: var(--bs-tertiary-bg); }
+
+/* --- Spinner --- */
+.spinner-border, .spinner-grow { color: var(--bs-primary); }
+
+/* --- Card --- */
+.card {
+  background-color: var(--bs-body-bg);
+  border-color: var(--bs-border-color);
+}
+.card-header, .card-footer {
+  background-color: var(--bs-tertiary-bg);
+  border-color: var(--bs-border-color);
+}
+
+/* --- Offcanvas --- */
+.offcanvas {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* --- Close button (btn-close) --- */
+.btn-close { filter: var(--bs-btn-close-filter, none); }
+[data-bs-theme="dark"] .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+

@@ -1,96 +1,60 @@
-<!-- Desktop Sidebar Toggle Button -->
+<!-- Desktop Sidebar Wrapper -->
 <div class="d-none d-lg-flex flex-column h-100">
-  <button
-    class="btn btn-outline-secondary m-2 align-self-start border-0"
-    (click)="toggleSidebar()"
-    title="Toggle Sidebar"
-  >
-    <i class="bi bi-list fs-5"></i>
-  </button>
 
-  <!-- Desktop Sidebar -->
-  <nav
-    class="bg-body-tertiary border-end h-100 overflow-y-auto"
-    [style.width]="isCollapsed ? '70px' : '250px'"
-    style="transition: width 0.3s ease; --bs-nav-link-color: var(--bs-body-color); --bs-nav-link-hover-color: var(--bs-primary);"
-  >
+  <nav class="bg-body-tertiary border-end h-100 overflow-y-auto"
+    [style.width]="layout.isSidebarCollapsed() ? '70px' : '250px'" style="transition: width 0.3s ease;">
     <ul class="nav nav-pills flex-column p-2 gap-1">
       <ng-container *ngFor="let item of menuItems">
         <li class="nav-item">
           <!-- Item with children -->
-          <button
-            *ngIf="hasChildren(item)"
-            class="nav-link w-100 text-start d-flex align-items-center gap-2 p-2"
-            (click)="toggleMenuExpand(item)"
-            [attr.aria-expanded]="item.isExpanded"
-          >
+          <button *ngIf="hasChildren(item)" class="nav-link w-100 text-start d-flex align-items-center gap-2 p-2"
+            (click)="toggleMenuExpand(item)" [attr.aria-expanded]="item.isExpanded">
             <i class="bi fs-5 text-center" [ngClass]="item.icon" style="width: 1.5rem;"></i>
-            <span class="text-truncate flex-grow-1" [class.d-none]="isCollapsed">
+            <span class="text-truncate flex-grow-1" [class.d-none]="layout.isSidebarCollapsed()">
               {{ item.label }}
             </span>
-            <i
-              class="bi bi-chevron-down ms-auto"
-              [class.d-none]="isCollapsed"
+            <i class="bi bi-chevron-down ms-auto" [class.d-none]="layout.isSidebarCollapsed()"
               [style.transform]="item.isExpanded ? 'rotate(180deg)' : 'rotate(0)'"
-              style="transition: transform 0.2s ease;"
-            ></i>
+              style="transition: transform 0.2s ease;"></i>
           </button>
 
           <!-- Item without children -->
-          <a
-            *ngIf="!hasChildren(item)"
-            class="nav-link d-flex align-items-center gap-2 p-2"
-            [routerLink]="item.route"
-            routerLinkActive="active"
-          >
+          <a *ngIf="!hasChildren(item)" class="nav-link d-flex align-items-center gap-2 p-2" [routerLink]="item.route"
+            routerLinkActive="active">
             <i class="bi fs-5 text-center" [ngClass]="item.icon" style="width: 1.5rem;"></i>
-            <span class="text-truncate" [class.d-none]="isCollapsed">
+            <span class="text-truncate" [class.d-none]="layout.isSidebarCollapsed()">
               {{ item.label }}
             </span>
           </a>
 
           <!-- Level 1 Children -->
-          <ul
-            class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
-            *ngIf="hasChildren(item) && item.isExpanded"
-            [class.d-none]="isCollapsed"
-          >
+          <ul class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
+            *ngIf="hasChildren(item) && item.isExpanded" [class.d-none]="layout.isSidebarCollapsed()">
             <li class="nav-item" *ngFor="let child of item.children">
-              <button
-                *ngIf="hasChildren(child)"
+              <button *ngIf="hasChildren(child)"
                 class="nav-link w-100 text-start d-flex align-items-center gap-2 py-1 px-2 small"
-                (click)="toggleMenuExpand(child)"
-                [attr.aria-expanded]="child.isExpanded"
-              >
+                (click)="toggleMenuExpand(child)" [attr.aria-expanded]="child.isExpanded">
                 <i class="bi" [ngClass]="child.icon" style="width: 1.25rem;"></i>
-                <span class="text-truncate flex-grow-1">{{ child.label }}</span>
-                <i class="bi bi-chevron-down ms-auto" [style.transform]="child.isExpanded ? 'rotate(180deg)' : 'rotate(0)'" style="transition: transform 0.2s ease;"></i>
+                <span class="text flex-grow-1">{{ child.label }}</span>
+                <i class="bi bi-chevron-down ms-auto"
+                  [style.transform]="child.isExpanded ? 'rotate(180deg)' : 'rotate(0)'"
+                  style="transition: transform 0.2s ease;"></i>
               </button>
 
-              <a
-                *ngIf="!hasChildren(child)"
-                class="nav-link d-flex align-items-center gap-2 py-1 px-2 small"
-                [routerLink]="child.route"
-                routerLinkActive="active"
-              >
+              <a *ngIf="!hasChildren(child)" class="nav-link d-flex align-items-center gap-2 py-1 px-2 small"
+                [routerLink]="child.route" routerLinkActive="active">
                 <i class="bi" [ngClass]="child.icon" style="width: 1.25rem;"></i>
-                <span class="text-truncate">{{ child.label }}</span>
+                <span class="text">{{ child.label }}</span>
               </a>
 
               <!-- Level 2 Children -->
-              <ul
-                class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
-                *ngIf="hasChildren(child) && child.isExpanded"
-              >
+              <ul class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
+                *ngIf="hasChildren(child) && child.isExpanded">
                 <li class="nav-item" *ngFor="let grandchild of child.children">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 py-1 px-2"
-                    style="font-size: 0.85rem;"
-                    [routerLink]="grandchild.route"
-                    routerLinkActive="active"
-                  >
+                  <a class="nav-link d-flex align-items-center gap-2 py-1 px-2" style="font-size: 0.85rem;"
+                    [routerLink]="grandchild.route" routerLinkActive="active">
                     <i class="bi" [ngClass]="grandchild.icon" style="width: 1rem;"></i>
-                    <span class="text-truncate">{{ grandchild.label }}</span>
+                    <span class="text">{{ grandchild.label }}</span>
                   </a>
                 </li>
               </ul>
@@ -103,78 +67,56 @@
 </div>
 
 <!-- Mobile Offcanvas Sidebar -->
-<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="sidebarOffcanvas"
+  aria-labelledby="sidebarOffcanvasLabel">
   <div class="offcanvas-header bg-body-tertiary border-bottom">
     <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Menu</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body p-0" style="--bs-nav-link-color: var(--bs-body-color); --bs-nav-link-hover-color: var(--bs-primary);">
+  <div class="offcanvas-body p-0">
     <ul class="nav nav-pills flex-column p-2 gap-1">
       <ng-container *ngFor="let item of menuItems">
         <li class="nav-item">
-          <button
-            *ngIf="hasChildren(item)"
-            class="nav-link w-100 text-start d-flex align-items-center gap-2 p-2"
-            (click)="toggleMenuExpand(item)"
-            [attr.aria-expanded]="item.isExpanded"
-          >
+          <button *ngIf="hasChildren(item)" class="nav-link w-100 text-start d-flex align-items-center gap-2 p-2"
+            (click)="toggleMenuExpand(item)" [attr.aria-expanded]="item.isExpanded">
             <i class="bi fs-5 text-center" [ngClass]="item.icon" style="width: 1.5rem;"></i>
             <span class="text-truncate flex-grow-1">{{ item.label }}</span>
-            <i class="bi bi-chevron-down ms-auto" [style.transform]="item.isExpanded ? 'rotate(180deg)' : 'rotate(0)'" style="transition: transform 0.2s ease;"></i>
+            <i class="bi bi-chevron-down ms-auto" [style.transform]="item.isExpanded ? 'rotate(180deg)' : 'rotate(0)'"
+              style="transition: transform 0.2s ease;"></i>
           </button>
 
-          <a
-            *ngIf="!hasChildren(item)"
-            class="nav-link d-flex align-items-center gap-2 p-2"
-            [routerLink]="item.route"
-            routerLinkActive="active"
-            data-bs-dismiss="offcanvas"
-          >
+          <a *ngIf="!hasChildren(item)" class="nav-link d-flex align-items-center gap-2 p-2" [routerLink]="item.route"
+            routerLinkActive="active" data-bs-dismiss="offcanvas">
             <i class="bi fs-5 text-center" [ngClass]="item.icon" style="width: 1.5rem;"></i>
             <span class="text-truncate">{{ item.label }}</span>
           </a>
 
           <!-- Level 1 Children -->
-          <ul
-            class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
-            *ngIf="hasChildren(item) && item.isExpanded"
-          >
+          <ul class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
+            *ngIf="hasChildren(item) && item.isExpanded">
             <li class="nav-item" *ngFor="let child of item.children">
-              <button
-                *ngIf="hasChildren(child)"
+              <button *ngIf="hasChildren(child)"
                 class="nav-link w-100 text-start d-flex align-items-center gap-2 py-1 px-2 small"
-                (click)="toggleMenuExpand(child)"
-                [attr.aria-expanded]="child.isExpanded"
-              >
+                (click)="toggleMenuExpand(child)" [attr.aria-expanded]="child.isExpanded">
                 <i class="bi" [ngClass]="child.icon" style="width: 1.25rem;"></i>
                 <span class="text-truncate flex-grow-1">{{ child.label }}</span>
-                <i class="bi bi-chevron-down ms-auto" [style.transform]="child.isExpanded ? 'rotate(180deg)' : 'rotate(0)'" style="transition: transform 0.2s ease;"></i>
+                <i class="bi bi-chevron-down ms-auto"
+                  [style.transform]="child.isExpanded ? 'rotate(180deg)' : 'rotate(0)'"
+                  style="transition: transform 0.2s ease;"></i>
               </button>
 
-              <a
-                *ngIf="!hasChildren(child)"
-                class="nav-link d-flex align-items-center gap-2 py-1 px-2 small"
-                [routerLink]="child.route"
-                routerLinkActive="active"
-                data-bs-dismiss="offcanvas"
-              >
+              <a *ngIf="!hasChildren(child)" class="nav-link d-flex align-items-center gap-2 py-1 px-2 small"
+                [routerLink]="child.route" routerLinkActive="active" data-bs-dismiss="offcanvas">
                 <i class="bi" [ngClass]="child.icon" style="width: 1.25rem;"></i>
                 <span class="text-truncate">{{ child.label }}</span>
               </a>
 
               <!-- Level 2 Children -->
-              <ul
-                class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
-                *ngIf="hasChildren(child) && child.isExpanded"
-              >
+              <ul class="nav nav-pills flex-column ms-3 ps-2 border-start mt-1 gap-1"
+                *ngIf="hasChildren(child) && child.isExpanded">
                 <li class="nav-item" *ngFor="let grandchild of child.children">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 py-1 px-2"
-                    style="font-size: 0.85rem;"
-                    [routerLink]="grandchild.route"
-                    routerLinkActive="active"
-                    data-bs-dismiss="offcanvas"
-                  >
+                  <a class="nav-link d-flex align-items-center gap-2 py-1 px-2" style="font-size: 0.85rem;"
+                    [routerLink]="grandchild.route" routerLinkActive="active" data-bs-dismiss="offcanvas">
                     <i class="bi" [ngClass]="grandchild.icon" style="width: 1rem;"></i>
                     <span class="text-truncate">{{ grandchild.label }}</span>
                   </a>
